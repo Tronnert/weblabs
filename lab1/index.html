@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBC Store</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <h1>SBC Store</h1>
+        <button id="cartToggle" class="cart-btn">Cart <span id="cartCount">0</span></button>
+    </header>
+
+    <main class="catalog">
+
+        <article class="card">
+            <img src="orange-pi-rv2.png" alt="Orange Pi RV2">
+            <h3>Orange Pi RV2</h3>
+            <p class="price">$60</p>
+            <button class="addCart" data-name="Orange Pi RV2" data-price="60">Add to cart</button>
+        </article>
+
+        <article class="card">
+            <img src="raspberry-pi-5.jpg" alt="Raspberry Pi 5">
+            <h3>Raspberry Pi 5</h3>
+            <p class="price">$137</p>
+            <button class="addCart" data-name="Raspberry Pi 5" data-price="137">Add to cart</button>
+        </article>
+
+        <article class="card">
+            <img src="banana-bpi-r4.jpg" alt="Banana PPI R4">
+            <h3>Banana Pi R4</h3>
+            <p class="price">$96</p>
+            <button class="addCart" data-name="Banana PPI R4" data-price="96">Add to cart</button>
+        </article>
+
+        <article class="card">
+            <img src="lattepanda-3-delta.jpg" alt="LattePanda 3 Delta">
+            <h3>LattePanda 3 Delta</h3>
+            <p class="price">$270</p>
+            <button class="addCart" data-name="LattePanda 3 Delta" data-price="270">Add to cart</button>
+        </article>
+
+        <article class="card">
+            <img src="Orange_Pi_5-3239478512.jpg" alt="Orange Pi 5">
+            <h3>Orange Pi 5</h3>
+            <p class="price">$116</p>
+            <button class="addCart" data-name="Orange Pi 5" data-price="116">Add to cart</button>
+        </article>
+
+        <article class="card">
+            <img src="rpi4-modbp-8gb-1876202706.jpg" alt="Raspberry Pi 4">
+            <h3>Raspberry Pi 4</h3>
+            <p class="price">$90</p>
+            <button class="addCart" data-name="Raspberry Pi 4" data-price="90">Add to cart</button>
+        </article>
+
+        <article class="card">
+            <img src="buy-milk-v-jupiter-view-1903250435.webp" alt="Milk-V Jupiter">
+            <h3>Milk-V Jupiter</h3>
+            <p class="price">$200</p>
+            <button class="addCart" data-name="Milk-V Jupiter" data-price="200">Add to cart</button>
+        </article>
+
+        <article class="card">
+            <img src="raspberry-pi-compute-module-5-CM5-front-scaled-2753494791.jpg" alt="Raspberry Pi CM5">
+            <h3>Raspberry Pi CM5</h3>
+            <p class="price">$214.50</p>
+            <button class="addCart" data-name="Raspberry Pi CM5" data-price="214.50">Add to cart</button>
+        </article>
+        <div id="cart" class="cart">
+            <h2>Your Cart</h2>
+
+            <ul id="cartItems"></ul>
+
+            <p class="cartTotal">
+                Total: $<span id="cartTotal">0</span>
+            </p>
+            <button id="orderBtn">Order</button>
+            <button id="clearCart">Clear cart</button>
+        </div>
+    </main>
+    <div id="orderModal" class="modal">
+
+        <div class="modal-content">
+
+            <h2>Checkout</h2>
+
+            <form id="orderForm">
+
+                <input type="text" placeholder="Your Name" required>
+
+                <input type="email" placeholder="Email" required>
+
+                <input type="text" placeholder="Address" required>
+
+                <button type="submit">Confirm Order</button>
+
+            </form>
+
+            <button id="closeModal">Cancel</button>
+
+        </div>
+    </div>
+</body>
+<script src="js/cart.js"></script>
+
+</html>

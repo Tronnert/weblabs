@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f5f5f5;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: #222;
+    color: white;
+}
+
+.cart-btn {
+    padding: 10px 16px;
+    border: none;
+    background: #ff9800;
+    color: white;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.catalog {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 40px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+}
+
+.card h3 {
+    margin: 10px 0;
+}
+
+.price {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card button {
+    padding: 10px;
+    border: none;
+    background: #2196f3;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.cart {
+    position: fixed;
+    right: -350px;
+    top: 120px;
+    ;
+    width: 320px;
+    height: 100%;
+    background: white;
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    transition: 0.3s;
+}
+
+.cart.open {
+    right: 0;
+}
+
+.cart ul {
+    list-style: none;
+    margin: 20px 0;
+}
+
+.cart li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.cartTotal {
+    font-weight: bold;
+}
+
+#cartItems {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    list-style: none;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.open {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 300px;
+}
+
+.modal-content input {
+    padding: 8px;
+}
+
+@media (max-width:768px) {
+
+    .header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .catalog {
+        padding: 20px;
+        gap: 15px;
+    }
+
+}
