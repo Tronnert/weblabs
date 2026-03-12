@@ -4,9 +4,11 @@ const scoreEl = document.getElementById("score")
 let grid = []
 let score = 0
 let history = []
+let isGameOver = false
 
 function init() {
-
+    isGameOver = false
+    document.getElementById("game-over").classList.add("hidden")
     grid = Array(4).fill().map(() => Array(4).fill(0))
     score = 0
 
@@ -82,8 +84,24 @@ function slide(line) {
 
 }
 
-function move(dir) {
+function canMove() {
 
+    for (let r = 0; r < 4; r++) {
+        for (let c = 0; c < 4; c++) {
+
+            if (grid[r][c] === 0) return true
+
+            if (c < 3 && grid[r][c] === grid[r][c + 1]) return true
+            if (r < 3 && grid[r][c] === grid[r + 1][c]) return true
+
+        }
+    }
+
+    return false
+}
+
+function move(dir) {
+    if (isGameOver) return
     saveState()
 
     for (let i = 0; i < 4; i++) {
@@ -120,7 +138,9 @@ function move(dir) {
 
     spawn()
     render()
-
+    if (!canMove()) {
+        gameOver()
+    }
 }
 
 document.addEventListener("keydown", e => {
@@ -132,6 +152,12 @@ document.addEventListener("keydown", e => {
 
 })
 
+function gameOver() {
+    isGameOver = true
+    document.getElementById("game-over").classList.remove("hidden")
+
+}
+
 document.querySelectorAll("#mobile-controls button").forEach(btn => {
     btn.onclick = () => move(btn.dataset.dir)
 })
@@ -141,7 +167,71 @@ document.getElementById("restart2").onclick = init
 
 function saveState() {
     history.push(JSON.stringify({ grid, score }))
-    if (history.length > 20) history.shift()
+}
+
+function saveScore(name, score) {
+
+    let board = JSON.parse(localStorage.getItem("leaderboard")) || []
+
+    board.push({
+        name: name,
+        score: score,
+        date: new Date().toISOString().split("T")[0]
+    })
+
+    board.sort((a, b) => b.score - a.score)
+
+    board = board.slice(0, 10)
+
+    localStorage.setItem("leaderboard", JSON.stringify(board))
+
+}
+
+function renderLeaderboard() {
+
+    let board = JSON.parse(localStorage.getItem("leaderboard")) || []
+    let tbody = document.getElementById("leaderboardBody")
+
+    tbody.innerHTML = ""
+
+    board.forEach(p => {
+
+        let tr = document.createElement("tr")
+
+        tr.innerHTML = `
+        <td>${p.name}</td>
+        <td>${p.score}</td>
+        <td>${p.date}</td>
+        `
+
+        tbody.appendChild(tr)
+
+    })
+
+}
+
+document.getElementById("saveScore").onclick = () => {
+
+    let name = document.getElementById("playerName").value || "Player"
+
+    saveScore(name, score)
+    init()
+    renderLeaderboard()
+
+}
+
+document.getElementById("leadersBtn").onclick = () => {
+
+    renderLeaderboard()
+
+    document.getElementById("leaderboard").classList.remove("hidden")
+
+}
+
+document.getElementById("closeLeaders").onclick = () => {
+
+    document.getElementById("leaderboard").classList.add("hidden")
+
 }
 
 document.getElementById("undo").onclick = () => {
