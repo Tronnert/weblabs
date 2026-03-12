@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>2048</h1>
+
+        <div class="top-bar">
+            <div class="score-box">
+                Score: <span id="score">0</span>
+            </div>
+
+            <div class="buttons">
+                <button id="restart">Restart</button>
+                <button id="undo">Undo</button>
+                <button id="leadersBtn">Leaderboard</button>
+            </div>
+        </div>
+
+
+        <div id="board"></div>
+
+
+        <div id="mobile-controls">
+            <button data-dir="up">↑</button>
+            <button data-dir="left">←</button>
+            <button data-dir="down">↓</button>
+            <button data-dir="right">→</button>
+        </div>
+
+
+        <div id="game-over" class="hidden">
+            <h2>Game Over</h2>
+            <input id="playerName" placeholder="Your name">
+            <button id="saveScore">Save score</button>
+            <button id="restart2">Play again</button>
+        </div>
+
+
+        <div id="leaderboard" class="modal hidden">
+            <h2>Leaderboard</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Score</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+
+                <tbody id="leaderboardBody"></tbody>
+            </table>
+
+            <button id="closeLeaders">Close</button>
+        </div>
+
+    </div>
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
