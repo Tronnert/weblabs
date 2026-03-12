@@ -12,13 +12,9 @@ body {
     background: white;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 350px;
     text-align: center;
-}
-
-.search {
-    margin-bottom: 20px;
 }
 
 input {
@@ -30,6 +26,7 @@ input {
 
 button {
     padding: 8px 12px;
+    margin: 5px;
     border: none;
     background: #0077ff;
     color: white;
@@ -41,28 +38,46 @@ button:hover {
     opacity: 0.9;
 }
 
-.weather {
-    margin-top: 20px;
+.hidden { display: none; }
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
 }
 
-.forecast {
-    margin-top: 20px;
+.city-weather {
+    background: #f5f7fa;
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     text-align: left;
 }
 
+.city-weather h2 {
+    margin: 0 0 10px 0;
+}
+
 .forecast-day {
-    padding: 10px;
+    background: #e8ecf0;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+}
+
+#citiesContainer {
+    margin-top: 20px;
+    max-height: 400px; 
+    overflow-y: auto;  
+    padding-right: 5px; 
+}
+
+.city-weather {
     background: #f5f7fa;
-    margin-bottom: 10px;
+    margin-top: 15px;
+    padding: 10px;
     border-radius: 6px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.hidden {
-    display: none;
-}
-
-.data p {
-    margin: 8px 0;
-    font-size: 16px;
+    text-align: left;
 }
