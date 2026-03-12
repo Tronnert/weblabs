@@ -93,29 +93,29 @@ function render() {
                 "Edit task and date (format: text | YYYY-MM-DD)",
                 `${task.text} | ${task.date}`
             )
-        
+
             if (!input) return
-        
+
             const parts = input.split("|")
-        
+
             if (parts.length !== 2) {
                 alert("Format must be: text | YYYY-MM-DD")
                 return
             }
-        
+
             const newText = parts[0].trim()
             const newDate = parts[1].trim()
-        
+
             const datePattern = /^\d{4}-\d{2}-\d{2}$/
-        
+
             if (!datePattern.test(newDate)) {
                 alert("Date must be in format YYYY-MM-DD")
                 return
             }
-        
+
             task.text = newText
             task.date = newDate
-        
+
             save()
             render()
         }
